@@ -236,3 +236,4 @@ with tab4:
                             st.write("Etiquetas:", it["tags"])
         except Exception as e:
             st.error(f"Error en la búsqueda: {e}")
+
