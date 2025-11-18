@@ -1,10 +1,12 @@
-
+###
 import os
 import json
 import numpy as np
 import pandas as pd
 import requests
 import streamlit as st
+
+API_URL = st.secrets["API_URL"]
 
 st.set_page_config(page_title="📚 Recomendador de Libros", page_icon="📚", layout="wide")
 
@@ -16,7 +18,10 @@ mode = st.sidebar.radio("Modo de uso", ["Usar API FastAPI", "Cargar artefactos l
 k = st.sidebar.slider("Cantidad de recomendaciones (k)", 1, 20, 5)
 
 if mode == "Usar API FastAPI":
-   base_url = st.sidebar.text_input("URL de la API", value="https://bookrec-api-1.onrender.com")
+    base_url = API_URL
+    st.sidebar.write(f"🔗 Usando API: {base_url}")
+ 
+    #base_url = st.sidebar.text_input("URL de la API", value="https://bookrec-api-1.onrender.com")
     #base_url = st.sidebar.text_input("URL de la API", value="http://localhost:8000")
 else:
     model_dir = st.sidebar.text_input("Carpeta de modelos", value="models")
